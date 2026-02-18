@@ -15,8 +15,8 @@ export async function generateMetadata({
     params: Promise<PageParams>;
 }): Promise<Metadata> {
     const { site } = await params;
-    const { store } = (await getStore(site)) as { store: UserData | null };
-
+const data = await getStore(site);
+const store = data?.store as UserData | null;
     return {
         title: store ? store.website.store_name : "Shop",
         description: "Browse our categories",
@@ -29,8 +29,8 @@ export default async function ShopPage({
     params: Promise<PageParams>;
 }) {
     const { site } = await params;
-    const { store } = (await getStore(site)) as { store: UserData | null };
-
+const data = await getStore(site);
+const store = data?.store as UserData | null;
     if (!store) return notFound();
 
     // Filter categories to only show active ones
@@ -47,4 +47,5 @@ export default async function ShopPage({
             />
         </div>
     );
+
 }
