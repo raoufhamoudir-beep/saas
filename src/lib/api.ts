@@ -2,7 +2,7 @@ import { Product, UserData } from "@/types";
 
 // lib/api.ts
 // const api = process.env.NEXT_PUBLIC_API as string;
-const api = "https://true-fit-dz-api.vercel.app/";
+const api = "https://true-fit-dz-api.vercel.app";
 
 
 
@@ -92,4 +92,5 @@ export async function getProduct(id: string, subdomain: string): Promise<Product
         console.error("API Error (getProduct):", error);
         return null;
     }
+
 }
